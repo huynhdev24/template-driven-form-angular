@@ -5,12 +5,16 @@
         <div class="form-group">
           <label for="name">Name</label>
           <input type="text" class="form-control" id="name"
-                 required
+                 required minlength="4"
                  [(ngModel)]="model.name" name="name"
                  #name="ngModel">
+          <!-- If the Name field is left blank, turn on the red message -->
           <div [hidden]="name.valid || name.pristine"
                class="alert alert-danger">
             Name is required
+          </div>
+          <div *ngIf="name.errors?.['minlength']">
+            Name must be at least 4 characters long.
           </div>
         </div>
   
@@ -28,6 +32,7 @@
                   #power="ngModel">
             <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
           </select>
+          <!-- If the Hero Power field is left blank, turn on the red notification -->
           <div [hidden]="power.valid || power.pristine" class="alert alert-danger">
             Power is required
           </div>
