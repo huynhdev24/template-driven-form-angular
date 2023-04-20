@@ -12,4 +12,8 @@ export class HeroFormComponent {
   model = new Hero(18, 'Dr. IQ', this.powers[0], 'Chuck Overstreet');
   submitted = false;
   onSubmit() { this.submitted = true; }
+
+  newHero() {
+    this.model = new Hero(42, '', '');
+  }
 }
